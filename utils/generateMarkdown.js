@@ -2,6 +2,7 @@
 // If there is no license, return an empty string
 function Data(title) {
   this.title = title;
+  this.formattedTitle;
 }
 let appProperties;
 
@@ -18,12 +19,12 @@ function renderLicenseSection(license) {}
 // Set Title
 function setTitle(title) {
   appProperties = new Data(title);
+  appProperties.formattedTitle = `# ${appProperties.title}`;
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(title) {
-  setTitle(title);
-  return `# ${appProperties.title}`;
+function generateMarkdown(data) {
+  setTitle(data.title);
+  return appProperties.formattedTitle;
 }
-
 module.exports = {generateMarkdown};
