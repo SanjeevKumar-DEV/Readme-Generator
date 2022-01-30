@@ -1,5 +1,5 @@
 {
 	"title": "Coding",
-	"description": "This is the desc",
-	"installations": "Install1"
+	"description": "Import a HTML file and watch it magically convert to Markdown Import a HTML file and watch it magically convert to Markdown",
+	"installations": "Install2"
 }
