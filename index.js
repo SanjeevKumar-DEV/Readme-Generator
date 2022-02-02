@@ -15,41 +15,74 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    getUserInputToCreateReadMeFileAndCallFileGenerator();
+    getUserInputToCreateTitleAndDescriptions();
 }
 
-// Get input for description, installation instructions, usage information, contribution guidelines, and test instructions
+const installInstruct = [];
+let installInstructionContinued = true;
 
-function getUserInputToCreateReadMeFileAndCallFileGenerator() {
+// Get input for description, installation instructions, usage information, contribution guidelines, and test instructions
+function getUserInputToCreateInstallInstructions() {
     inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'title',
-            message: 'Please enter Title of this application.',
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: 'Please enter description of this application.',
-        },
-        {
-            type: 'input',
-            //   message: 'What languages do you know?',
-            name: 'installations',
-            //   choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
-            message: 'Please write install instructions as series of steps',
-        },
-    ])
-    .then((data) => {
-        // const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
-        const fileName = 'log.txt';
-        fs.writeFile(fileName, JSON.stringify(data, null, '\t'), (err) =>
-            err ? console.log(err) : console.log('Success!')
-        );
-        const fileNameReadme = './Others/Readme.md';
-        writeToFile(fileNameReadme, gm.generateMarkdown(data));
-    });
+        .prompt([
+            {
+                type: 'input',
+                name: 'instruction',
+                message: 'Enter your install instruction step.',
+            },
+            {
+                type: 'input',
+                name: 'code',
+                message: 'Please enter associated code with this step, if applicable else leave blank and press Enter.',
+            },
+            {
+                type: 'input',
+                name: 'nextStep',
+                message: 'Do you have any more steps for install instruction ? Type \'Y\' Yes and \'N\' for No',
+            },
+        ])
+        .then((data) => {
+            installInstruct.push(data);
+            if (data.nextStep.toUpperCase() !== 'Y') {
+                installInstructionContinued = false;
+                const fileNameTest = 'log1.txt';
+                writeToFile(fileNameTest, JSON.stringify(installInstruct));
+            }
+            else {
+                getUserInputToCreateInstallInstructions();
+            }
+        });
+}
+
+function getUserInputToCreateTitleAndDescriptions() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'title',
+                message: 'Please enter Title of this application.',
+            },
+            {
+                type: 'input',
+                name: 'description',
+                message: 'Please enter description of this application.',
+            },
+            {
+                type: 'input',
+                name: 'installations',
+                message: 'Please enter \'Y\', if you have install instructions applicable for your readme doc.',
+            },
+        ])
+        .then((data) => {
+            // const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
+            if (data.installations.toUpperCase() === 'Y') {
+                getUserInputToCreateInstallInstructions();
+            }
+            const fileName = 'log.txt';
+            writeToFile(fileName, gm.generateMarkdown(data));
+            const fileNameReadme = './Others/Readme.md';
+            writeToFile(fileNameReadme, gm.generateMarkdown(data));
+        });
 }
 
 // Function call to initialize app
