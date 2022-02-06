@@ -26,7 +26,7 @@ function Data(applicationName, repoURL) {
   this.tests;
   this.formattedTests = `## Tests${doubleNextLine}`;
   this.questions;
-  this.formattedQuestions = `## Questions${doubleNextLine}`; 
+  this.formattedQuestions = `## Questions${doubleNextLine}`;
 }
 
 function renderLicenseBadge(license) { }
@@ -50,50 +50,54 @@ function generateReadmeFileAsString() {
 
 // Set Title
 function setTitle() {
-  appProperties.title = userData[1].title;
-  appProperties.formattedTitle = `# ${appProperties.title}${doubleNextLine}`;
+  if (userData.length > 1) {
+    appProperties.title = userData[1].title;
+    appProperties.formattedTitle = `# ${appProperties.title}${doubleNextLine}`;
+  }
 }
 
 // Set Descriptions
 function setDesc() {
-  appProperties.description = userData[1].description;
-  const maxNumberOfCharsPerLine = 50;
-  let descArray = appProperties.description.split(' ');
-  let currentCountInLine = 0;
-  let currentLine = '';
-  descArray.forEach(element => {
-    if (currentCountInLine == 0) {
-      appProperties.formattedDesc += '> '
-      currentLine = '\r\n> ';
-      currentCountInLine = currentLine.length;
-    }
+  if (userData.length > 1) {
+    appProperties.description = userData[1].description;
+    const maxNumberOfCharsPerLine = 50;
+    let descArray = appProperties.description.split(' ');
+    let currentCountInLine = 0;
+    let currentLine = '';
+    descArray.forEach(element => {
+      if (currentCountInLine == 0) {
+        appProperties.formattedDesc += '> '
+        currentLine = '> ';
+        currentCountInLine = currentLine.length;
+      }
 
-    if ((currentLine + element + ' ').length < maxNumberOfCharsPerLine) {
-      appProperties.formattedDesc += element + ' ';
-      currentLine += element + ' ';
-      currentCountInLine = currentLine.length;
-    }
-    else {
-      appProperties.formattedDesc += '\r\n> ' + element + ' ';
-      currentLine = '\r\n> ' + element + ' ';
-      currentCountInLine = currentLine.length;
-    }
+      if ((currentLine + element + ' ').length < maxNumberOfCharsPerLine) {
+        appProperties.formattedDesc += element + ' ';
+        currentLine += element + ' ';
+        currentCountInLine = currentLine.length;
+      }
+      else {
+        appProperties.formattedDesc += '\r\n> ' + element + ' ';
+        currentLine = '\r\n> ' + element + ' ';
+        currentCountInLine = currentLine.length;
+      }
 
-  });
-  appProperties.formattedDesc += doubleNextLine;
+    });
+    appProperties.formattedDesc += doubleNextLine;
+  }
 }
 function setInstallInstruction() {
-  appProperties.installInstruction = userData[2];
-  appProperties.installInstruction.forEach(element => {
-    if(element.instruction.length > 0)
-    {
-      appProperties.formattedInstallInstruction += element.instruction + singleNextLine;
-    }
-    if(element.code.length > 0)
-    {
-      appProperties.formattedInstallInstruction += '```' +  element.code + '```' + singleNextLine;
-    } 
-  });
+  if (userData.length > 2) {
+    appProperties.installInstruction = userData[2];
+    appProperties.installInstruction.forEach(element => {
+      if (element.instruction.length > 0) {
+        appProperties.formattedInstallInstruction += element.instruction + singleNextLine;
+      }
+      if (element.code.length > 0) {
+        appProperties.formattedInstallInstruction += '```' + element.code + '```' + singleNextLine;
+      }
+    });
+  }
 }
 
 // TODO: Create a function to generate markdown for README

@@ -39,6 +39,7 @@ function getUserInputForAppRepositoryInformation() {
             readMeInputObject.push(data);
             const fileName = 'repo.txt';
             writeToFile(fileName, JSON.stringify(data));
+            prepareReadMeInput();
             getUserInputToCreateTitleAndDescriptions();
         })
 }
@@ -112,7 +113,7 @@ function getUserInputToCreateInstallInstructions() {
 }
 
 function prepareReadMeInput() {
-    const fileNameReadme = './Others/Readme.md';
+    const fileNameReadme = './Others/README.md';
     writeToFile(fileNameReadme, gm.generateMarkdown(readMeInputObject));
 }
 
