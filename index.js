@@ -2,6 +2,10 @@
 const fs = require('fs');
 const gm = require('./utils/generateMarkdown.js');
 const inquirer = require('inquirer');
+let readMeInputObject = [];
+let installInstructionContinued = true;
+let installInstruct = [];
+// const prompt = inquirer.createPromptModule();
 
 // TODO: Create an array of questions for user input
 //let questions = [];
@@ -9,7 +13,7 @@ const inquirer = require('inquirer');
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
-        err ? console.error(err) : console.log('Success!')
+        err ? console.error(err) : 'Success!'
     );
 }
 
@@ -18,8 +22,7 @@ function init() {
     getUserInputToCreateTitleAndDescriptions();
 }
 
-const installInstruct = [];
-let installInstructionContinued = true;
+let instructionStep = 1;
 
 // Get input for description, installation instructions, usage information, contribution guidelines, and test instructions
 function getUserInputToCreateInstallInstructions() {
@@ -28,27 +31,30 @@ function getUserInputToCreateInstallInstructions() {
             {
                 type: 'input',
                 name: 'instruction',
-                message: 'Enter your install instruction step.',
+                message: `Enter your install instruction step ${instructionStep} .`,
             },
             {
                 type: 'input',
                 name: 'code',
-                message: 'Please enter associated code with this step, if applicable else leave blank and press Enter.',
+                message: `Please enter associated code with this step ${instructionStep}, if applicable else leave blank and press Enter.`,
             },
             {
                 type: 'input',
                 name: 'nextStep',
-                message: 'Do you have any more steps for install instruction ? Type \'Y\' Yes and \'N\' for No',
+                message: 'Do you have more steps for install instructions as part of your readme ? Type \'Y\' Yes and \'N\' for No',
             },
         ])
         .then((data) => {
             installInstruct.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
                 installInstructionContinued = false;
-                const fileNameTest = 'log1.txt';
+                const fileNameTest = 'installInstruct.txt';
                 writeToFile(fileNameTest, JSON.stringify(installInstruct));
+                readMeInputObject.push(installInstruct);
+                console.log(readMeInputObject);
             }
             else {
+                instructionStep++;
                 getUserInputToCreateInstallInstructions();
             }
         });
@@ -74,15 +80,19 @@ function getUserInputToCreateTitleAndDescriptions() {
             },
         ])
         .then((data) => {
-            // const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
-            if (data.installations.toUpperCase() === 'Y') {
+            readMeInputObject.push(data);
+            const fileName = 'titleAndDesciption.txt';
+            writeToFile(fileName, JSON.stringify(data));
+            if (readMeInputObject[0].installations.toUpperCase() === 'Y') {
                 getUserInputToCreateInstallInstructions();
             }
-            const fileName = 'log.txt';
-            writeToFile(fileName, gm.generateMarkdown(data));
-            const fileNameReadme = './Others/Readme.md';
-            writeToFile(fileNameReadme, gm.generateMarkdown(data));
+            prepareReadMeInput();
         });
+}
+
+function prepareReadMeInput() {
+    const fileNameReadme = './Others/Readme.md';
+    writeToFile(fileNameReadme, gm.generateMarkdown(readMeInputObject[0]));
 }
 
 // Function call to initialize app
