@@ -1,15 +1,33 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 let userData;
-function Data(title) {
-  this.title = title;
-  this.formattedTitle;
-  this.description;
-  this.formattedDesc;
-  this.installInstruction = [];
-  this.formattedInstallInstruction;
-}
+let singleNextLine = '\r\n';
+let doubleNextLine = '\r\n\r\n';
 let appProperties;
+let readMe;
+
+function Data(applicationName, repoURL) {
+  this.applicationName = applicationName;
+  this.repoURL = repoURL;
+  this.title;
+  this.formattedTitle = `# <Title-Of-My-Project>${doubleNextLine}`;
+  this.description;
+  this.formattedDesc = `## Description${doubleNextLine}`;
+  this.tableOfContents;
+  this.formattedTableOfContents = `## Table of Contents${doubleNextLine}`;
+  this.installInstruction = [];
+  this.formattedInstallInstruction = `## Installation${doubleNextLine}`;
+  this.usage;
+  this.formattedUsage = `## Usage${doubleNextLine}`;
+  this.license;
+  this.formattedLicense;
+  this.contributing;
+  this.formattedContributing = `## Contributing${doubleNextLine}`;
+  this.tests;
+  this.formattedTests = `## Tests${doubleNextLine}`;
+  this.questions;
+  this.formattedQuestions = `## Questions${doubleNextLine}`; 
+}
 
 function renderLicenseBadge(license) { }
 
@@ -21,24 +39,31 @@ function renderLicenseLink(license) { }
 // If there is no license, return an empty string
 function renderLicenseSection(license) { }
 
+function generateReadmeFileAsString() {
+  appProperties = new Data(userData[0].applicationName, userData[0].repoURL);
+  setTitle();
+  setDesc();
+  setInstallInstruction();
+  readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction;
+  return readMe;
+}
+
 // Set Title
 function setTitle() {
-  appProperties = new Data(userData[0].title);
-  appProperties.formattedTitle = `# ${appProperties.title}`;
+  appProperties.title = userData[1].title;
+  appProperties.formattedTitle = `# ${appProperties.title}${doubleNextLine}`;
 }
 
 // Set Descriptions
 function setDesc() {
-  appProperties.description = userData[0].description;
-  appProperties.formattedDesc = '';
-  // appProperties.formattedDesc = `# ${appProperties.description}`;
+  appProperties.description = userData[1].description;
   const maxNumberOfCharsPerLine = 50;
   let descArray = appProperties.description.split(' ');
   let currentCountInLine = 0;
   let currentLine = '';
   descArray.forEach(element => {
     if (currentCountInLine == 0) {
-      appProperties.formattedDesc += '\r\n> ';
+      appProperties.formattedDesc += '> '
       currentLine = '\r\n> ';
       currentCountInLine = currentLine.length;
     }
@@ -55,18 +80,18 @@ function setDesc() {
     }
 
   });
+  appProperties.formattedDesc += doubleNextLine;
 }
 function setInstallInstruction() {
-  appProperties.installInstruction = userData[1];
-  appProperties.formattedInstallInstruction = '\r\n# Install Instructions';
+  appProperties.installInstruction = userData[2];
   appProperties.installInstruction.forEach(element => {
     if(element.instruction.length > 0)
     {
-      appProperties.formattedInstallInstruction += '\r\n- ' + element.instruction;
+      appProperties.formattedInstallInstruction += element.instruction + singleNextLine;
     }
     if(element.code.length > 0)
     {
-      appProperties.formattedInstallInstruction += '\r\n' + '```' +  element.code + '```';
+      appProperties.formattedInstallInstruction += '```' +  element.code + '```' + singleNextLine;
     } 
   });
 }
@@ -74,9 +99,6 @@ function setInstallInstruction() {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   userData = data;
-  setTitle();
-  setDesc();
-  setInstallInstruction();
-  return appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedInstallInstruction;
+  return generateReadmeFileAsString();
 }
 module.exports = { generateMarkdown };

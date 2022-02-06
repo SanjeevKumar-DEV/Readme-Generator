@@ -3,9 +3,8 @@ const fs = require('fs');
 const gm = require('./utils/generateMarkdown.js');
 const inquirer = require('inquirer');
 let readMeInputObject = [];
-let installInstructionContinued = true;
+// let installInstructionContinued = true;
 let installInstruct = [];
-// const prompt = inquirer.createPromptModule();
 
 // TODO: Create an array of questions for user input
 //let questions = [];
@@ -19,7 +18,58 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-    getUserInputToCreateTitleAndDescriptions();
+    getUserInputForAppRepositoryInformation();
+}
+
+function getUserInputForAppRepositoryInformation() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'applicationName',
+                message: 'Welcome to README.md generator. Please enter repo name of this application.',
+            },
+            {
+                type: 'input',
+                name: 'repoURL',
+                message: 'Please enter repository URL for this application.',
+            },
+        ])
+        .then((data) => {
+            readMeInputObject.push(data);
+            const fileName = 'repo.txt';
+            writeToFile(fileName, JSON.stringify(data));
+            getUserInputToCreateTitleAndDescriptions();
+        })
+}
+
+function getUserInputToCreateTitleAndDescriptions() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'title',
+                message: 'Please enter Title of this application.',
+            },
+            {
+                type: 'input',
+                name: 'description',
+                message: 'Please enter description of this application.',
+            },
+            {
+                type: 'input',
+                name: 'installations',
+                message: 'Please enter \'Y\', if you have install instructions applicable for your readme doc.',
+            },
+        ])
+        .then((data) => {
+            readMeInputObject.push(data);
+            const fileName = 'titleAndDesciption.txt';
+            writeToFile(fileName, JSON.stringify(data));
+            if (data.installations.toUpperCase() === 'Y') {
+                getUserInputToCreateInstallInstructions();
+            }
+        })
 }
 
 let instructionStep = 1;
@@ -47,7 +97,7 @@ function getUserInputToCreateInstallInstructions() {
         .then((data) => {
             installInstruct.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                installInstructionContinued = false;
+                // installInstructionContinued = false;
                 const fileNameTest = 'installInstruct.txt';
                 writeToFile(fileNameTest, JSON.stringify(installInstruct));
                 readMeInputObject.push(installInstruct);
@@ -59,35 +109,6 @@ function getUserInputToCreateInstallInstructions() {
                 getUserInputToCreateInstallInstructions();
             }
         });
-}
-
-function getUserInputToCreateTitleAndDescriptions() {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'title',
-                message: 'Please enter Title of this application.',
-            },
-            {
-                type: 'input',
-                name: 'description',
-                message: 'Please enter description of this application.',
-            },
-            {
-                type: 'input',
-                name: 'installations',
-                message: 'Please enter \'Y\', if you have install instructions applicable for your readme doc.',
-            },
-        ])
-        .then((data) => {
-            readMeInputObject.push(data);
-            const fileName = 'titleAndDesciption.txt';
-            writeToFile(fileName, JSON.stringify(data));
-            if (readMeInputObject[0].installations.toUpperCase() === 'Y') {
-                getUserInputToCreateInstallInstructions();
-            }
-        })
 }
 
 function prepareReadMeInput() {
