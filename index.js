@@ -52,6 +52,7 @@ function getUserInputToCreateInstallInstructions() {
                 writeToFile(fileNameTest, JSON.stringify(installInstruct));
                 readMeInputObject.push(installInstruct);
                 console.log(readMeInputObject);
+                prepareReadMeInput();
             }
             else {
                 instructionStep++;
@@ -86,13 +87,12 @@ function getUserInputToCreateTitleAndDescriptions() {
             if (readMeInputObject[0].installations.toUpperCase() === 'Y') {
                 getUserInputToCreateInstallInstructions();
             }
-            prepareReadMeInput();
-        });
+        })
 }
 
 function prepareReadMeInput() {
     const fileNameReadme = './Others/Readme.md';
-    writeToFile(fileNameReadme, gm.generateMarkdown(readMeInputObject[0]));
+    writeToFile(fileNameReadme, gm.generateMarkdown(readMeInputObject));
 }
 
 // Function call to initialize app

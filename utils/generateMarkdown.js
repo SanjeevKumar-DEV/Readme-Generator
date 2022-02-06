@@ -6,6 +6,8 @@ function Data(title) {
   this.formattedTitle;
   this.description;
   this.formattedDesc;
+  this.installInstruction = [];
+  this.formattedInstallInstruction;
 }
 let appProperties;
 
@@ -21,13 +23,13 @@ function renderLicenseSection(license) { }
 
 // Set Title
 function setTitle() {
-  appProperties = new Data(userData.title);
+  appProperties = new Data(userData[0].title);
   appProperties.formattedTitle = `# ${appProperties.title}`;
 }
 
 // Set Descriptions
 function setDesc() {
-  appProperties.description = userData.description;
+  appProperties.description = userData[0].description;
   appProperties.formattedDesc = '';
   // appProperties.formattedDesc = `# ${appProperties.description}`;
   const maxNumberOfCharsPerLine = 50;
@@ -41,7 +43,7 @@ function setDesc() {
       currentCountInLine = currentLine.length;
     }
 
-    if ((currentLine + element + ' ').length < maxNumberOfCharsPerLine ) {
+    if ((currentLine + element + ' ').length < maxNumberOfCharsPerLine) {
       appProperties.formattedDesc += element + ' ';
       currentLine += element + ' ';
       currentCountInLine = currentLine.length;
@@ -54,12 +56,27 @@ function setDesc() {
 
   });
 }
+function setInstallInstruction() {
+  appProperties.installInstruction = userData[1];
+  appProperties.formattedInstallInstruction = '\r\n# Install Instructions';
+  appProperties.installInstruction.forEach(element => {
+    if(element.instruction.length > 0)
+    {
+      appProperties.formattedInstallInstruction += '\r\n- ' + element.instruction;
+    }
+    if(element.code.length > 0)
+    {
+      appProperties.formattedInstallInstruction += '\r\n' + '```' +  element.code + '```';
+    } 
+  });
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   userData = data;
   setTitle();
   setDesc();
-  return appProperties.formattedTitle + appProperties.formattedDesc;
+  setInstallInstruction();
+  return appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedInstallInstruction;
 }
 module.exports = { generateMarkdown };
