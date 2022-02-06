@@ -43,8 +43,9 @@ function generateReadmeFileAsString() {
   appProperties = new Data(userData[0].applicationName, userData[0].repoURL);
   setTitle();
   setDesc();
+  buildTableOfContents();
   setInstallInstruction();
-  readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction;
+  readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions;
   return readMe;
 }
 
@@ -97,7 +98,21 @@ function setInstallInstruction() {
         appProperties.formattedInstallInstruction += '```' + element.code + '```' + singleNextLine;
       }
     });
+    appProperties.formattedInstallInstruction += singleNextLine;
   }
+}
+
+function buildTableOfContents() {
+  appProperties.tableOfContents = [];
+  appProperties.tableOfContents.push({name: 'Installation', link : '#Installation'});
+  appProperties.tableOfContents.push({name: 'Usage', link : '#Usage'});
+  appProperties.tableOfContents.push({name: 'Contributing', link : '#Contributing'});
+  tableOfContentsFormattedArray = appProperties.tableOfContents.map(element => {
+    return `- [${element.name}](${element.link})`;
+  });
+  appProperties.formattedTableOfContents += tableOfContentsFormattedArray.join('\r\n');
+  appProperties.formattedTableOfContents += doubleNextLine;
+
 }
 
 // TODO: Create a function to generate markdown for README
