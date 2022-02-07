@@ -45,6 +45,7 @@ function generateReadmeFileAsString() {
   setDesc();
   buildTableOfContents();
   setInstallInstruction();
+  setUsageInformation();
   readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions;
   return readMe;
 }
@@ -104,15 +105,34 @@ function setInstallInstruction() {
 
 function buildTableOfContents() {
   appProperties.tableOfContents = [];
-  appProperties.tableOfContents.push({name: 'Installation', link : '#Installation'});
-  appProperties.tableOfContents.push({name: 'Usage', link : '#Usage'});
-  appProperties.tableOfContents.push({name: 'Contributing', link : '#Contributing'});
+  appProperties.tableOfContents.push({ name: 'Installation', link: '#Installation' });
+  appProperties.tableOfContents.push({ name: 'Usage', link: '#Usage' });
+  appProperties.tableOfContents.push({ name: 'Contributing', link: '#Contributing' });
   tableOfContentsFormattedArray = appProperties.tableOfContents.map(element => {
     return `- [${element.name}](${element.link})`;
   });
   appProperties.formattedTableOfContents += tableOfContentsFormattedArray.join('\r\n');
   appProperties.formattedTableOfContents += doubleNextLine;
 
+}
+
+function setUsageInformation() {
+  if (userData.length > 3) {
+    if (userData[3].length > 0) {
+      appProperties.usage = userData[3];
+      
+      appProperties.usage.forEach(element => {
+        if (element.usageDesc !== '') {
+          appProperties.formattedUsage += `> ${element.usageDesc} ${singleNextLine}`;
+        }
+        if (element.imageLocation !== '') {
+          appProperties.formattedUsage += `\`\`\`md${singleNextLine}![${element.altText}](${element.imageLocation}) ${singleNextLine}\`\`\` ${singleNextLine}`;
+        }
+
+      });
+    }
+  }
+  appProperties.formattedUsage += singleNextLine;
 }
 
 // TODO: Create a function to generate markdown for README

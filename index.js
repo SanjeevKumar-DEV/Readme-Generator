@@ -102,8 +102,9 @@ function getUserInputToCreateInstallInstructions() {
                 const fileNameTest = 'installInstruct.txt';
                 writeToFile(fileNameTest, JSON.stringify(installInstruct));
                 readMeInputObject.push(installInstruct);
-                console.log(readMeInputObject);
+                // console.log(readMeInputObject);
                 prepareReadMeInput();
+                getUserInputForUsageInformation();
             }
             else {
                 instructionStep++;
@@ -111,6 +112,51 @@ function getUserInputToCreateInstallInstructions() {
             }
         });
 }
+
+let usageInfoCounter = 1;
+let usageInfo = [];
+
+function getUserInputForUsageInformation() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'usageDesc',
+                message: `Enter your uasge instruction step ${usageInfoCounter} .`,
+            },
+            {
+                type: 'input',
+                name: 'altText',
+                message: `If there is any image associated with this usage step ${usageInfoCounter}, please enter alt image name of it, if applicable else leave blank and press Enter.`,
+            },
+            {
+                type: 'input',
+                name: 'imageLocation',
+                message: `Please enter associated image location with this step ${instructionStep}, if applicable else leave blank and press Enter.`,
+            },
+            {
+                type: 'input',
+                name: 'nextStep',
+                message: 'Do you have more steps for uasge instructions ? Type \'Y\' Yes and \'N\' for No',
+            },
+        ])
+        .then((data) => {
+            usageInfo.push(data);
+            if (data.nextStep.toUpperCase() !== 'Y') {
+                // installInstructionContinued = false;
+                const fileName = 'usageInfo.txt';
+                writeToFile(fileName, JSON.stringify(usageInfo));
+                readMeInputObject.push(usageInfo);
+                console.log(readMeInputObject);
+                prepareReadMeInput();
+            }
+            else {
+                usageInfoCounter++;
+                getUserInputForUsageInformation();
+            }
+        });
+}
+
 
 function prepareReadMeInput() {
     const fileNameReadme = './Others/README.md';
