@@ -147,13 +147,44 @@ function getUserInputForUsageInformation() {
                 const fileName = 'usageInfo.txt';
                 writeToFile(fileName, JSON.stringify(usageInfo));
                 readMeInputObject.push(usageInfo);
-                console.log(readMeInputObject);
+                // console.log(readMeInputObject);
                 prepareReadMeInput();
+                getUserInputForContributing();
             }
             else {
                 usageInfoCounter++;
                 getUserInputForUsageInformation();
             }
+        });
+}
+
+let contributing = [];
+function getUserInputForContributing() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'contributingText',
+                message: `If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. Enter instruction text here.`,
+            },
+            {
+                type: 'input',
+                name: 'nameOfTheLink',
+                message: `If there is a documentation link available for contribution process and guideline. Please enter name of that link and press Enter`,
+            },
+            {
+                type: 'input',
+                name: 'linkURL',
+                message: `Please enter url of that link and press Enter.`,
+            },
+        ])
+        .then((data) => {
+            contributing.push(data);
+            const fileName = 'contributing.txt';
+            writeToFile(fileName, JSON.stringify(contributing));
+            readMeInputObject.push(contributing);
+            console.log(readMeInputObject);
+            prepareReadMeInput();
         });
 }
 

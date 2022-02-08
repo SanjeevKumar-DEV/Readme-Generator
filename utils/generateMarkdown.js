@@ -46,6 +46,7 @@ function generateReadmeFileAsString() {
   buildTableOfContents();
   setInstallInstruction();
   setUsageInformation();
+  setContributingInfo();
   readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions;
   return readMe;
 }
@@ -134,6 +135,26 @@ function setUsageInformation() {
   }
   appProperties.formattedUsage += singleNextLine;
 }
+
+function setContributingInfo() {
+  if (userData.length > 4) {
+    if (userData[4].length > 0) {
+      appProperties.contributing = userData[4];
+      
+      appProperties.contributing.forEach(element => {
+        if (element.contributingText !== '') {
+          appProperties.formattedContributing += `> ${element.contributingText} ${singleNextLine}`;
+        }
+        if (element.linkURL !== '') {
+          appProperties.formattedContributing += `${singleNextLine}![${element.nameOfTheLink}](${element.linkURL}) ${singleNextLine}${singleNextLine}`;
+        }
+
+      });
+    }
+  }
+  appProperties.formattedContributing += singleNextLine;
+}
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {

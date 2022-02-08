@@ -1,9 +1,8 @@
-# Coding Quiz
+# Coding Quiz Title
 
 ## Description
 
-> This is a great application for to test your 
-> coding skills.  
+> This is a very good coding quiz. 
 
 ## Table of Contents
 
@@ -13,23 +12,28 @@
 
 ## Installation
 
-Install step 1
-```sh install step 1```
-Install step 2
-```sh install step 2```
+Step 1
+```sh step 1```
+step 2
+```sh step 2```
 
 ## Usage
 
 > Usage step 1 
 ```md
-![Coding Quiz 1](assets/Images/CodingQuiz.png) 
+![assets/Images/CodingQuiz.png](assets/Images/CodingQuiz.png) 
 ``` 
-> Usage step 2 
+> Usage Step 2 
 ```md
 ![Coding quiz 2](assets/Images/CodingQuiz.png) 
 ``` 
 
 ## Contributing
+
+> This is how to contibute on contribution. 
+
+![Contibution link](https://www.contributor-covenant.org/) 
+
 
 ## Tests
 
