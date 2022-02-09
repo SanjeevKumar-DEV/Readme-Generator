@@ -25,7 +25,7 @@ step 2
 ``` 
 > Usage Step 2 
 ```md
-![Coding quiz 2](assets/Images/CodingQuiz.png) 
+![Coding quiz 2](./assets/Images/CodingQuiz.png) 
 ``` 
 
 ## Contributing
