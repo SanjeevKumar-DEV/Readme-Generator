@@ -27,7 +27,7 @@ step 2
 ```md
 ![Coding quiz 2](https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png) 
 ``` 
-<img width="1167" alt="quizStartScreen" src="https://user-images.githubusercontent.com/93074312/146662434-e9e0a55f-fe6d-4184-b3e3-239aee0e8ee0.png">
+<img width="1167" alt="quizStartScreen" src="https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png">
 
 ## Contributing
 
