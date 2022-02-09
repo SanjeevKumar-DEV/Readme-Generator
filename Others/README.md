@@ -25,6 +25,8 @@ step 2
 ``` 
 ![Coding quiz 1](https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png)
 
+![Coding quiz 1](assets/Images/CodingQuiz.png)
+
 > Usage Step 2 
 ```md
 ![Coding quiz 2] <img width="1167" alt="quizStartScreen" src="https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png"> 
