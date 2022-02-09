@@ -57,19 +57,12 @@ function getUserInputToCreateTitleAndDescriptions() {
                 name: 'description',
                 message: 'Please enter description of this application.',
             },
-            {
-                type: 'input',
-                name: 'installations',
-                message: 'Please enter \'Y\', if you have install instructions applicable for your readme doc.',
-            },
         ])
         .then((data) => {
             readMeInputObject.push(data);
             const fileName = 'titleAndDesciption.txt';
             writeToFile(fileName, JSON.stringify(data));
-            if (data.installations.toUpperCase() === 'Y') {
-                getUserInputToCreateInstallInstructions();
-            }
+            getUserInputToCreateInstallInstructions();
         })
 }
 

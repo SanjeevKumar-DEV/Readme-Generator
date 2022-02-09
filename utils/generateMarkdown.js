@@ -97,7 +97,7 @@ function setInstallInstruction() {
         appProperties.formattedInstallInstruction += element.instruction + singleNextLine;
       }
       if (element.code.length > 0) {
-        appProperties.formattedInstallInstruction += '```' + element.code + '```' + singleNextLine;
+        appProperties.formattedInstallInstruction += '```' + singleNextLine + element.code + singleNextLine + '```' + singleNextLine;
       }
     });
     appProperties.formattedInstallInstruction += singleNextLine;
@@ -127,13 +127,14 @@ function setUsageInformation() {
           appProperties.formattedUsage += `> ${element.usageDesc} ${singleNextLine}`;
         }
         if (element.imageLocation !== '') {
-          appProperties.formattedUsage += `\`\`\`md${singleNextLine}![${element.altText}](${element.imageLocation}) ${singleNextLine}\`\`\` ${singleNextLine}`;
+          appProperties.formattedUsage += `![${element.altText}](${element.imageLocation}) ${singleNextLine}`;
         }
 
       });
     }
+    appProperties.formattedUsage += singleNextLine;
   }
-  appProperties.formattedUsage += singleNextLine;
+  
 }
 
 function setContributingInfo() {
@@ -151,8 +152,8 @@ function setContributingInfo() {
 
       });
     }
+    appProperties.formattedContributing += singleNextLine;
   }
-  appProperties.formattedContributing += singleNextLine;
 }
 
 
