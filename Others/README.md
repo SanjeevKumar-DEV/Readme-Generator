@@ -21,7 +21,7 @@ step 2
 
 > Usage step 1 
 ```md
-![assets/Images/CodingQuiz.png](assets/Images/CodingQuiz.png) 
+![assets/Images/CodingQuiz.png](../assets/Images/CodingQuiz.png) 
 ``` 
 ![Coding quiz 1](https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png)
 
