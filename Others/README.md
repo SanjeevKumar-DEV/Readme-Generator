@@ -36,7 +36,7 @@ step 2
 
 > This is how to contibute on contribution. 
 
-![Contibution link](https://www.contributor-covenant.org/) 
+[Contibution link](https://www.contributor-covenant.org/) 
 
 
 ## Tests
