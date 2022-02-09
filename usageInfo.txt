@@ -1,1 +1,0 @@
-[{"usageDesc":"Usage step 1","altText":"Coding quiz 1","imageLocation":"../assets/Images/CodingQuiz.png","nextStep":"y"},{"usageDesc":"Usage Step 2","altText":"Coding quiz 2","imageLocation":"../assets/Images/CodingQuiz.png","nextStep":"n"}]

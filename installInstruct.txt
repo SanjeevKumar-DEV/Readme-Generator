@@ -1,1 +1,0 @@
-[{"instruction":"Install step 1","code":"sh step 1","nextStep":"y"},{"instruction":"Install step 2","code":"sh step 2","nextStep":"n"}]
