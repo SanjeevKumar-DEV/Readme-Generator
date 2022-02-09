@@ -2,7 +2,7 @@
 
 ## Description
 
-> Coding quiz description 
+> This is very good coding quiz application 
 
 ## Table of Contents
 
@@ -23,19 +23,22 @@ sh step 2
 
 ## Usage
 
-> Usage Step 1 
-![Usage Image Step 1](../assets/Images/CodingQuiz.png) 
+> Usage step 1 
+![Coding quiz 1](../assets/Images/CodingQuiz.png) 
 > Usage Step 2 
-![Usage Image Step 2](../assets/Images/CodingQuiz.png) 
+![Coding quiz 2](../assets/Images/CodingQuiz.png) 
 
 ## Contributing
 
-> This is the instruction text. 
+> This is contribution page. 
 
 ![Contribution link](https://www.contributor-covenant.org/) 
 
 
 ## Tests
+
+> This is test instruction step 1. 
+> This is test instruction step 2.  
 
 ## Questions
 

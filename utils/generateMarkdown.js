@@ -47,6 +47,7 @@ function generateReadmeFileAsString() {
   setInstallInstruction();
   setUsageInformation();
   setContributingInfo();
+  setTestsInstructions();
   readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions;
   return readMe;
 }
@@ -121,7 +122,7 @@ function setUsageInformation() {
   if (userData.length > 3) {
     if (userData[3].length > 0) {
       appProperties.usage = userData[3];
-      
+
       appProperties.usage.forEach(element => {
         if (element.usageDesc !== '') {
           appProperties.formattedUsage += `> ${element.usageDesc} ${singleNextLine}`;
@@ -134,14 +135,14 @@ function setUsageInformation() {
     }
     appProperties.formattedUsage += singleNextLine;
   }
-  
+
 }
 
 function setContributingInfo() {
   if (userData.length > 4) {
     if (userData[4].length > 0) {
       appProperties.contributing = userData[4];
-      
+
       appProperties.contributing.forEach(element => {
         if (element.contributingText !== '') {
           appProperties.formattedContributing += `> ${element.contributingText} ${singleNextLine}`;
@@ -153,6 +154,21 @@ function setContributingInfo() {
       });
     }
     appProperties.formattedContributing += singleNextLine;
+  }
+}
+
+function setTestsInstructions() {
+  if (userData.length > 5) {
+    if (userData[5].length > 0) {
+      appProperties.tests = userData[5];
+
+      appProperties.tests.forEach(element => {
+        if (element.testStep !== '') {
+          appProperties.formattedTests += `> ${element.testStep} ${singleNextLine}`;
+        }
+      });
+    }
+    appProperties.formattedTests += singleNextLine;
   }
 }
 

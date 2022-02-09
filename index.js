@@ -176,9 +176,43 @@ function getUserInputForContributing() {
             const fileName = 'contributing.txt';
             writeToFile(fileName, JSON.stringify(contributing));
             readMeInputObject.push(contributing);
-            console.log(readMeInputObject);
+            // console.log(readMeInputObject);
             prepareReadMeInput();
+            getUserInputOnHowToTestApplication();
         });
+}
+
+let tests = [];
+let testCounter = 1;
+function getUserInputOnHowToTestApplication() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'testStep',
+                message: `If tests are applicable, Enter paragraph ${testCounter} or step ${testCounter} on how to test and press Enter.`,
+            },
+            {
+                type: 'input',
+                name: 'nextStep',
+                message: `Do you have anymore text to be inserted on how to set up test instructions ? Type \'Y\' for Yes and \'N\' for No`,
+            },
+        ])
+        .then((data) => {
+            tests.push(data);
+            if (data.nextStep.toUpperCase() !== 'Y') {
+                const fileName = 'tests.txt';
+                writeToFile(fileName, JSON.stringify(data));
+                readMeInputObject.push(tests);
+                console.log(readMeInputObject);
+                prepareReadMeInput();
+            }
+            else {
+                testCounter++;
+                getUserInputOnHowToTestApplication();
+            }
+        });
+
 }
 
 

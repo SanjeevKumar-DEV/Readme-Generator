@@ -1,0 +1,1 @@
+[{"contributingText":"This is contribution page.","nameOfTheLink":"Contribution link","linkURL":"https://www.contributor-covenant.org/"}]
