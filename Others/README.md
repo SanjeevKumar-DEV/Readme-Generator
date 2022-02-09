@@ -23,7 +23,7 @@ step 2
 ```md
 ![assets/Images/CodingQuiz.png](assets/Images/CodingQuiz.png) 
 ``` 
-![Coding quiz 1](assets/Images/CodingQuiz.png)
+![Coding quiz 1](https://raw.githubusercontent.com/SanjeevKumar-DEV/Readme-Generator/main/assets/Images/CodingQuiz.png)
 
 > Usage Step 2 
 ```md
