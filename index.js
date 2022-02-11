@@ -6,21 +6,18 @@ let readMeInputObject = [];
 // let installInstructionContinued = true;
 let installInstruct = [];
 
-// TODO: Create an array of questions for user input
-//let questions = [];
-
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
         err ? console.error(err) : 'Success!'
     );
 }
 
-// TODO: Create a function to initialize app
+// TODO: Create a function to initialize app and start capture of user input for readme file
 function init() {
     getUserInputForAppRepositoryInformation();
 }
 
+// Capture application name, repository URL
 function getUserInputForAppRepositoryInformation() {
     inquirer
         .prompt([
@@ -41,6 +38,8 @@ function getUserInputForAppRepositoryInformation() {
             getUserInputToCreateTitleAndDescriptions();
         })
 }
+
+// Capture title and description input from user 
 
 function getUserInputToCreateTitleAndDescriptions() {
     inquirer
@@ -101,6 +100,8 @@ function getUserInputToCreateInstallInstructions() {
 let usageInfoCounter = 1;
 let usageInfo = [];
 
+// Capture application usage information input from user
+
 function getUserInputForUsageInformation() {
     inquirer
         .prompt([
@@ -139,6 +140,8 @@ function getUserInputForUsageInformation() {
         });
 }
 
+// Capture contribution information as input from user
+
 let contributing = [];
 function getUserInputForContributing() {
     inquirer
@@ -166,6 +169,8 @@ function getUserInputForContributing() {
             getUserInputOnHowToTestApplication();
         });
 }
+
+// Capture test instruction information as input from user
 
 let tests = [];
 let testCounter = 1;
@@ -198,6 +203,8 @@ function getUserInputOnHowToTestApplication() {
 
 }
 
+// Capture license information as input from user
+
 let license = [];
 let licenseOptions = gm.createListOfBadges().map((element) => { return element.name });
 function getUserInputOnLicenseRequirement() {
@@ -224,6 +231,8 @@ function getUserInputOnLicenseRequirement() {
 
 }
 
+// Capture github user information as input from user
+
 function getUserInputToCaptureGithubUsername() {
     inquirer
         .prompt([
@@ -241,6 +250,8 @@ function getUserInputToCaptureGithubUsername() {
 
 }
 
+// Capture email address information as input from user
+
 function getUserInputToCaptureEmailAddress() {
     inquirer
         .prompt([
@@ -257,6 +268,8 @@ function getUserInputToCaptureEmailAddress() {
         });
 
 }
+
+// prepare README.md doc
 
 function prepareReadMeInput() {
     const fileNameReadme = './Others/README.md';

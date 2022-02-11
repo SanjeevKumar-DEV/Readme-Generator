@@ -6,6 +6,8 @@ let doubleNextLine = '\r\n\r\n';
 let appProperties;
 let readMe;
 
+// Data Class to to store all inputs in one object
+
 function Data(applicationName, repoURL) {
   this.applicationName = applicationName;
   this.repoURL = repoURL;
@@ -36,6 +38,8 @@ function Data(applicationName, repoURL) {
   this.emailAddress;
   this.formattedEmailAddress = '';
 }
+
+// Creating list of licenses
 function createListOfBadges() {
   {
     listOfBadges = [
@@ -70,15 +74,7 @@ function createListOfBadges() {
 
 }
 
-function renderLicenseBadge(license) { }
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) { }
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) { }
+// Generating read me file as one String
 
 function generateReadmeFileAsString() {
   appProperties = new Data(userData[0].applicationName, userData[0].repoURL);
@@ -134,6 +130,8 @@ function setDesc() {
     appProperties.formattedDesc += doubleNextLine;
   }
 }
+
+// Setting install instructions string for Readme file 
 function setInstallInstruction() {
   if (userData.length > 2) {
     appProperties.installInstruction = userData[2];
@@ -148,6 +146,8 @@ function setInstallInstruction() {
     appProperties.formattedInstallInstruction += singleNextLine;
   }
 }
+
+// Building table of Contents as clickable links 
 
 function buildTableOfContents() {
   appProperties.tableOfContents = [];
@@ -164,6 +164,8 @@ function buildTableOfContents() {
   appProperties.formattedTableOfContents += doubleNextLine;
 
 }
+
+// Setting application usage instructions as string for Readme file 
 
 function setUsageInformation() {
   if (userData.length > 3) {
@@ -185,6 +187,8 @@ function setUsageInformation() {
 
 }
 
+// Setting Contributing instruction string for Readme file with applicable links 
+
 function setContributingInfo() {
   if (userData.length > 4) {
     if (userData[4].length > 0) {
@@ -204,6 +208,8 @@ function setContributingInfo() {
   }
 }
 
+// Set Test instructions text as string for readme file 
+
 function setTestsInstructions() {
   if (userData.length > 5) {
     if (userData[5].length > 0) {
@@ -218,6 +224,8 @@ function setTestsInstructions() {
     appProperties.formattedTests += singleNextLine;
   }
 }
+
+// Set License text and badge as string for readme file
 
 function setLicense() {
   if (userData.length > 6) {
@@ -235,6 +243,8 @@ function setLicenseText() {
   appProperties.formattedLicense += `> ${appProperties.license[0].notice + singleNextLine}`;
 }
 
+// Set github profile link in the readme  profile
+
 function setGithubProfile() {
   if (userData.length > 7) {
     if (userData[7] != 'undefined') {
@@ -244,6 +254,8 @@ function setGithubProfile() {
     }
   }
 }
+
+// Set email contact as clickable link for readme file 
 
 function setEmailAddressAsContact() {
   if (userData.length > 8) {
