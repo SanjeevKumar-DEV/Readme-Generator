@@ -271,7 +271,7 @@ function getUserInputToCaptureEmailAddress() {
 // prepare README.md doc
 
 function prepareReadMeInput() {
-    const fileNameReadme = './Others/README.md';
+    const fileNameReadme = './GeneratedReadme/README.md';
     writeToFile(fileNameReadme, gm.generateMarkdown(readMeInputObject));
 }
 
