@@ -263,7 +263,6 @@ function getUserInputToCaptureEmailAddress() {
         ])
         .then((data) => {
             readMeInputObject.push(data);
-            console.log(readMeInputObject);
             prepareReadMeInput();
         });
 
