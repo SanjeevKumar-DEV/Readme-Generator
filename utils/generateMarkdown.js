@@ -154,6 +154,9 @@ function buildTableOfContents() {
   appProperties.tableOfContents.push({ name: 'Installation', link: '#Installation' });
   appProperties.tableOfContents.push({ name: 'Usage', link: '#Usage' });
   appProperties.tableOfContents.push({ name: 'Contributing', link: '#Contributing' });
+  appProperties.tableOfContents.push({ name: 'Tests', link: '#Tests' });
+  appProperties.tableOfContents.push({ name: 'Questions', link: '#Questions' });
+  appProperties.tableOfContents.push({ name: 'License', link: '#License' });
   tableOfContentsFormattedArray = appProperties.tableOfContents.map(element => {
     return `- [${element.name}](${element.link})`;
   });
