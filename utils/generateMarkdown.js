@@ -28,10 +28,13 @@ function Data(applicationName, repoURL) {
   this.license;
   this.formattedLicense = `## License${doubleNextLine}`;
   this.badges = createListOfBadges();
-  // this.badge;
   this.formattedBadge = '';
   this.questions;
   this.formattedQuestions = `## Questions${doubleNextLine}`;
+  this.githubUsername;
+  this.formattedGithubUserProfile = '';
+  this.emailAddress;
+  this.formattedEmailAddress = '';
 }
 function createListOfBadges() {
   {
@@ -87,6 +90,8 @@ function generateReadmeFileAsString() {
   setUsageInformation();
   setContributingInfo();
   setTestsInstructions();
+  setGithubProfile();
+  setEmailAddressAsContact();
   readMe = appProperties.formattedBadge + appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions + appProperties.formattedLicense;
   return readMe;
 }
@@ -218,13 +223,33 @@ function setLicense() {
       appProperties.formattedBadge += `![${appProperties.license[0].licenseInput}](${appProperties.badges.filter(element => {
         if (appProperties.license[0].licenseInput === element.name) { return true; }
       })[0].linkToBadge})${singleNextLine}`;
+      setLicenseText();
     }
-    setLicenseText();
   }
 }
 
 function setLicenseText() {
-  appProperties.formattedLicense += `< ${appProperties.license[0].notice + singleNextLine}`;
+  appProperties.formattedLicense += `> ${appProperties.license[0].notice + singleNextLine}`;
+}
+
+function setGithubProfile() {
+  if (userData.length > 7) {
+    if (userData[7] != 'undefined') {
+      appProperties.githubUsername = userData[7];
+      appProperties.formattedGithubUserProfile += `> Q1. What is my link to my github profile ? ${singleNextLine}Answer: [Github Username](https://github.com/${appProperties.githubUsername.githubUsername}) ${doubleNextLine}`;
+      appProperties.formattedQuestions += appProperties.formattedGithubUserProfile;
+    }
+  }
+}
+
+function setEmailAddressAsContact() {
+  if (userData.length > 8) {
+    if (userData[8] !== 'undefined') {
+      appProperties.emailAddress = userData[8];
+      appProperties.formattedEmailAddress += `> Q2. How to reach me with additional questions ? ${singleNextLine}Answer: [Contact Email](mailto:${appProperties.emailAddress.emailAddress})${doubleNextLine}`;
+      appProperties.formattedQuestions += appProperties.formattedEmailAddress;
+    }
+  }
 }
 
 

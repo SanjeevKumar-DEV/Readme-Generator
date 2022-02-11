@@ -3,7 +3,7 @@
 
 ## Description
 
-> This is very good and interesting coding quiz. 
+> This is coding quiz application 
 
 ## Table of Contents
 
@@ -13,13 +13,13 @@
 
 ## Installation
 
-Install Step 1
+Install instruction step 1
 ```
-sh step 1
+sh installOne.sh
 ```
-Install step 2
+Install Instruction step 2
 ```
-sh step 2
+sh installSecond.sh
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ sh step 2
 
 ## Contributing
 
-> Your contributions are very welcome here!! 
+> Please follow below link for contribution guidelines. 
 
 ![Contribution Link](https://www.contributor-covenant.org/) 
 
@@ -40,9 +40,16 @@ sh step 2
 
 > Test Step 1 
 > Test Step 2 
+> Test Step 3 
 
 ## Questions
 
+> Q1. What is my link to my github profile ? 
+Answer: [Github Username](https://github.com/SanjeevKumar-DEV) 
+
+> Q2. How to reach me with additional questions ? 
+Answer: [Contact Email](mailto:sanjeevkumar@me.com)
+
 ## License
 
-< This is covered under license agreement with boost.
+> This application is covered under Boost license agreement.

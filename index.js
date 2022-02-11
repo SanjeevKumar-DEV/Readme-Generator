@@ -37,8 +37,6 @@ function getUserInputForAppRepositoryInformation() {
         ])
         .then((data) => {
             readMeInputObject.push(data);
-            const fileName = 'repo.txt';
-            writeToFile(fileName, JSON.stringify(data));
             prepareReadMeInput();
             getUserInputToCreateTitleAndDescriptions();
         })
@@ -60,8 +58,6 @@ function getUserInputToCreateTitleAndDescriptions() {
         ])
         .then((data) => {
             readMeInputObject.push(data);
-            const fileName = 'titleAndDesciption.txt';
-            writeToFile(fileName, JSON.stringify(data));
             getUserInputToCreateInstallInstructions();
         })
 }
@@ -91,10 +87,7 @@ function getUserInputToCreateInstallInstructions() {
         .then((data) => {
             installInstruct.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                const fileNameTest = 'installInstruct.txt';
-                writeToFile(fileNameTest, JSON.stringify(installInstruct));
                 readMeInputObject.push(installInstruct);
-                // console.log(readMeInputObject);
                 prepareReadMeInput();
                 getUserInputForUsageInformation();
             }
@@ -135,10 +128,7 @@ function getUserInputForUsageInformation() {
         .then((data) => {
             usageInfo.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                const fileName = 'usageInfo.txt';
-                writeToFile(fileName, JSON.stringify(usageInfo));
                 readMeInputObject.push(usageInfo);
-                // console.log(readMeInputObject);
                 prepareReadMeInput();
                 getUserInputForContributing();
             }
@@ -171,10 +161,7 @@ function getUserInputForContributing() {
         ])
         .then((data) => {
             contributing.push(data);
-            const fileName = 'contributing.txt';
-            writeToFile(fileName, JSON.stringify(contributing));
             readMeInputObject.push(contributing);
-            // console.log(readMeInputObject);
             prepareReadMeInput();
             getUserInputOnHowToTestApplication();
         });
@@ -199,10 +186,7 @@ function getUserInputOnHowToTestApplication() {
         .then((data) => {
             tests.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                const fileName = 'tests.txt';
-                writeToFile(fileName, JSON.stringify(data));
                 readMeInputObject.push(tests);
-                // console.log(readMeInputObject);
                 prepareReadMeInput();
                 getUserInputOnLicenseRequirement();
             }
@@ -233,15 +217,46 @@ function getUserInputOnLicenseRequirement() {
         ])
         .then((data) => {
             license.push(data);
-            const fileName = 'license.txt';
-            writeToFile(fileName, JSON.stringify(data));
             readMeInputObject.push(license);
+            prepareReadMeInput();
+            getUserInputToCaptureGithubUsername();
+        });
+
+}
+
+function getUserInputToCaptureGithubUsername() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'githubUsername',
+                message: `Please enter github username to make your github profile as part of your README.`,
+            },
+        ])
+        .then((data) => {
+            readMeInputObject.push(data);
+            prepareReadMeInput();
+            getUserInputToCaptureEmailAddress();
+        });
+
+}
+
+function getUserInputToCaptureEmailAddress() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'emailAddress',
+                message: `Please enter email address to be contacted on and be added to part of questions in README file.`,
+            },
+        ])
+        .then((data) => {
+            readMeInputObject.push(data);
             console.log(readMeInputObject);
             prepareReadMeInput();
         });
 
 }
-
 
 function prepareReadMeInput() {
     const fileNameReadme = './Others/README.md';
