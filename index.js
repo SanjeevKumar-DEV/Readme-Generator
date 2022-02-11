@@ -91,7 +91,6 @@ function getUserInputToCreateInstallInstructions() {
         .then((data) => {
             installInstruct.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                // installInstructionContinued = false;
                 const fileNameTest = 'installInstruct.txt';
                 writeToFile(fileNameTest, JSON.stringify(installInstruct));
                 readMeInputObject.push(installInstruct);
@@ -136,7 +135,6 @@ function getUserInputForUsageInformation() {
         .then((data) => {
             usageInfo.push(data);
             if (data.nextStep.toUpperCase() !== 'Y') {
-                // installInstructionContinued = false;
                 const fileName = 'usageInfo.txt';
                 writeToFile(fileName, JSON.stringify(usageInfo));
                 readMeInputObject.push(usageInfo);
@@ -158,7 +156,7 @@ function getUserInputForContributing() {
             {
                 type: 'input',
                 name: 'contributingText',
-                message: `If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. Enter instruction text here.`,
+                message: `If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. Enter guidelines text here.`,
             },
             {
                 type: 'input',
@@ -204,13 +202,42 @@ function getUserInputOnHowToTestApplication() {
                 const fileName = 'tests.txt';
                 writeToFile(fileName, JSON.stringify(data));
                 readMeInputObject.push(tests);
-                console.log(readMeInputObject);
+                // console.log(readMeInputObject);
                 prepareReadMeInput();
+                getUserInputOnLicenseRequirement();
             }
             else {
                 testCounter++;
                 getUserInputOnHowToTestApplication();
             }
+        });
+
+}
+
+let license = [];
+let licenseOptions = gm.createListOfBadges().map((element) => { return element.name });
+function getUserInputOnLicenseRequirement() {
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: 'Please choose license from list of options applicable to your application ?',
+                name: 'licenseInput',
+                choices: licenseOptions,
+            },
+            {
+                type: 'input',
+                name: 'notice',
+                message: `Please enter text for license description or information this application is covered under.`,
+            },
+        ])
+        .then((data) => {
+            license.push(data);
+            const fileName = 'license.txt';
+            writeToFile(fileName, JSON.stringify(data));
+            readMeInputObject.push(license);
+            console.log(readMeInputObject);
+            prepareReadMeInput();
         });
 
 }

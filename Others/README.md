@@ -1,8 +1,9 @@
-# Coding Quiz Title
+![Boost Software License 1.0](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)
+# Coding Quiz
 
 ## Description
 
-> This is very good coding quiz application 
+> This is very good and interesting coding quiz. 
 
 ## Table of Contents
 
@@ -12,7 +13,7 @@
 
 ## Installation
 
-Install step 1
+Install Step 1
 ```
 sh step 1
 ```
@@ -23,22 +24,25 @@ sh step 2
 
 ## Usage
 
-> Usage step 1 
-![Coding quiz 1](../assets/Images/CodingQuiz.png) 
+> Usage Step 1 
+![Coding Quiz 1](../assets/Images/CodingQuiz.png) 
 > Usage Step 2 
-![Coding quiz 2](../assets/Images/CodingQuiz.png) 
+![Coding Quiz 2](../assets/Images/CodingQuiz.png) 
 
 ## Contributing
 
-> This is contribution page. 
+> Your contributions are very welcome here!! 
 
-![Contribution link](https://www.contributor-covenant.org/) 
+![Contribution Link](https://www.contributor-covenant.org/) 
 
 
 ## Tests
 
-> This is test instruction step 1. 
-> This is test instruction step 2.  
+> Test Step 1 
+> Test Step 2 
 
 ## Questions
 
+## License
+
+< This is covered under license agreement with boost.

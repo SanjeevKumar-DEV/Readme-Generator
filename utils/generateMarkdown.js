@@ -25,8 +25,46 @@ function Data(applicationName, repoURL) {
   this.formattedContributing = `## Contributing${doubleNextLine}`;
   this.tests;
   this.formattedTests = `## Tests${doubleNextLine}`;
+  this.license;
+  this.formattedLicense = `## License${doubleNextLine}`;
+  this.badges = createListOfBadges();
+  // this.badge;
+  this.formattedBadge = '';
   this.questions;
   this.formattedQuestions = `## Questions${doubleNextLine}`;
+}
+function createListOfBadges() {
+  {
+    listOfBadges = [
+      {
+        name: 'Apache 2.0 License',
+        version: '2.0',
+        linkToBadge: 'https://img.shields.io/badge/License-Apache_2.0-blue.svg'
+      },
+      {
+        name: 'Boost Software License 1.0',
+        version: '1.0',
+        linkToBadge: 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg'
+      },
+      {
+        name: 'BSD 3-Clause License',
+        version: '3-Clause',
+        linkToBadge: 'https://img.shields.io/badge/License-BSD_3--Clause-blue.svg'
+      },
+      {
+        name: 'BSD 2-Clause License',
+        version: '2-Clause',
+        linkToBadge: 'https://img.shields.io/badge/License-BSD_2--Clause-orange.svg'
+      },
+      {
+        name: 'GNU GPL v3',
+        version: 'GPL v3',
+        linkToBadge: 'https://img.shields.io/badge/License-GPLv3-blue.svg'
+      }
+    ]
+    return listOfBadges;
+  }
+
 }
 
 function renderLicenseBadge(license) { }
@@ -41,6 +79,7 @@ function renderLicenseSection(license) { }
 
 function generateReadmeFileAsString() {
   appProperties = new Data(userData[0].applicationName, userData[0].repoURL);
+  setLicense();
   setTitle();
   setDesc();
   buildTableOfContents();
@@ -48,7 +87,7 @@ function generateReadmeFileAsString() {
   setUsageInformation();
   setContributingInfo();
   setTestsInstructions();
-  readMe = appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions;
+  readMe = appProperties.formattedBadge + appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions + appProperties.formattedLicense;
   return readMe;
 }
 
@@ -172,10 +211,26 @@ function setTestsInstructions() {
   }
 }
 
+function setLicense() {
+  if (userData.length > 6) {
+    if (userData[6].length > 0) {
+      appProperties.license = userData[6];
+      appProperties.formattedBadge += `![${appProperties.license[0].licenseInput}](${appProperties.badges.filter(element => {
+        if (appProperties.license[0].licenseInput === element.name) { return true; }
+      })[0].linkToBadge})${singleNextLine}`;
+    }
+    setLicenseText();
+  }
+}
+
+function setLicenseText() {
+  appProperties.formattedLicense += `< ${appProperties.license[0].notice + singleNextLine}`;
+}
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   userData = data;
   return generateReadmeFileAsString();
 }
-module.exports = { generateMarkdown };
+module.exports = { generateMarkdown, createListOfBadges };
