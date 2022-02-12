@@ -23,8 +23,8 @@ function getUserInputForAppRepositoryInformation() {
         .prompt([
             {
                 type: 'input',
-                name: 'applicationName',
-                message: 'Welcome to README.md generator. Please enter repo name of this application.',
+                name: 'applicationURL',
+                message: 'Welcome to README.md generator. Please enter application URL of this application if applicable.',
             },
             {
                 type: 'input',

@@ -8,9 +8,11 @@ let readMe;
 
 // Data Class to to store all inputs in one object
 
-function Data(applicationName, repoURL) {
-  this.applicationName = applicationName;
+function Data(applicationURL, repoURL) {
+  this.applicationURL = applicationURL;
+  this.formattedApplicationURL = '';
   this.repoURL = repoURL;
+  this.formattedRepoURL = '';
   this.title;
   this.formattedTitle = `# <Title-Of-My-Project>${doubleNextLine}`;
   this.description;
@@ -77,9 +79,10 @@ function createListOfBadges() {
 // Generating read me file as one String
 
 function generateReadmeFileAsString() {
-  appProperties = new Data(userData[0].applicationName, userData[0].repoURL);
+  appProperties = new Data(userData[0].applicationURL, userData[0].repoURL);
   setLicense();
   setTitle();
+  setApplicationURLAndRepoURL();
   setDesc();
   buildTableOfContents();
   setInstallInstruction();
@@ -88,8 +91,16 @@ function generateReadmeFileAsString() {
   setTestsInstructions();
   setGithubProfile();
   setEmailAddressAsContact();
-  readMe = appProperties.formattedBadge + appProperties.formattedTitle + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions + appProperties.formattedLicense;
+  readMe = appProperties.formattedBadge + appProperties.formattedTitle + appProperties.formattedApplicationURL + appProperties.formattedRepoURL + appProperties.formattedDesc + appProperties.formattedTableOfContents + appProperties.formattedInstallInstruction + appProperties.formattedUsage + appProperties.formattedContributing + appProperties.formattedTests + appProperties.formattedQuestions + appProperties.formattedLicense;
   return readMe;
+}
+
+function setApplicationURLAndRepoURL() {
+  if (userData.length > 0) {
+    appProperties.formattedApplicationURL = `[Application URL  ](${appProperties.applicationURL}) ${singleNextLine}`;
+    appProperties.formattedRepoURL = `[Repository URL ](${appProperties.repoURL})${doubleNextLine}`;
+  }
+
 }
 
 // Set Title

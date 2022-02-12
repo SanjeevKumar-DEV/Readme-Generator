@@ -1,9 +1,22 @@
-![Boost Software License 1.0](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)
-# Coding Quiz
+![GNU GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+# Timing Coding Quiz
+
+[Application URL  ](https://sanjeevkumar-dev.github.io/Timing-Coding-Quiz/)
+[Repository URL ](https://github.com/SanjeevKumar-DEV/Timing-Coding-Quiz)
 
 ## Description
 
-> This is coding quiz application 
+> This application provides timing coding quiz 
+> with multiple choice questions. You can view 
+> the stats of the quiz at end of the quiz or 
+> from top link "View Highscores" if quiz is 
+> not in progress. Once quiz finish, you can 
+> add your score to the existing tally. Your 
+> evaluated answers for previous question is 
+> displayed at the bottom of the screen. At 
+> the end of the quiz you can see your total 
+> score. You loose 10 points for each wrong 
+> answers. 
 
 ## Table of Contents
 
@@ -16,34 +29,38 @@
 
 ## Installation
 
-Install instruction step 1
+Clone the repository using the repository URL as mentioned below.
 ```
-sh installOne.sh
+Git clone git@github.com:SanjeevKumar-DEV/Timing-Coding-Quiz.git 
 ```
-Install Instruction step 2
+Open Terminal and go to cloned repository location and fire code editor
 ```
-sh installSecond.sh
+code . 
 ```
 
 ## Usage
 
-> Usage Step 1 
-![Coding Quiz 1](../assets/Images/CodingQuiz.png) 
-> Usage Step 2 
-![Coding Quiz 2](../assets/Images/CodingQuiz.png) 
+> Start the quiz by Pressing Start Quiz button 
+![Quiz Start Screen](../assets/Images/quizStartScreen.png) 
+> Answer the question 1 by selecting write answer from multiple choices. 
+![Question Screen 1](../assets/Images/questionScreen1.png ) 
+> Answer the question 2 by selecting write answer from multiple choices and all the rest of the subsequent questions one after another. 
+![Question Screen 2](../assets/Images/questionScreen2.png) 
+> Once you reach quiz completed screen. Submit your initials. 
+![Quiz Completed Screen](../assets/Images/quizCompletedScreen.png) 
+> Now you can view the stats and also clear the scores or start the quiz again. 
+![Stats Screen](../assets/Images/statsScreen2.png) 
 
 ## Contributing
 
-> Please follow below link for contribution guidelines. 
+> Contribution guidelines development is in progress. 
 
-![Contribution Link](https://www.contributor-covenant.org/) 
+![Contribution Guidelines](https://www.contributor-covenant.org/) 
 
 
 ## Tests
 
-> Test Step 1 
-> Test Step 2 
-> Test Step 3 
+> Test Development strategy is in progress. 
 
 ## Questions
 
@@ -55,4 +72,4 @@ Answer: [Contact Email](mailto:sanjeevkumar@me.com)
 
 ## License
 
-> This application is covered under Boost license agreement.
+> License agreement is covered under guidelines and agreement of GitHub and Microsoft.
