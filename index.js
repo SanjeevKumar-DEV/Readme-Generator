@@ -118,7 +118,7 @@ function getUserInputForUsageInformation() {
             {
                 type: 'input',
                 name: 'imageLocation',
-                message: `Please enter associated image location with this step ${instructionStep}, if applicable else leave blank and press Enter.`,
+                message: `Please enter associated image location with this step ${usageInfoCounter}, if applicable else leave blank and press Enter.`,
             },
             {
                 type: 'input',
