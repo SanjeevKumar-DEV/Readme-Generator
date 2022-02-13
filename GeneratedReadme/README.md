@@ -40,15 +40,24 @@ Code .
 
 ## Usage
 
-> Start the quiz by Pressing Start Quiz button 
+> Start the quiz by Pressing Start Quiz button
+ 
 ![Quiz Start Screen](../assets/Images/quizStartScreen.png) 
+
 > Answer the question 1 by selecting write answer from multiple choices. 
+
 ![Question Screen 1](../assets/Images/questionScreen1.png ) 
+
 > Answer the question 2 by selecting write answer from multiple choices and all the rest of the subsequent questions one after another. 
+
 ![Question Screen 2](../assets/Images/questionScreen2.png) 
+
 > Once you reach quiz completed screen. Submit your initials. 
+
 ![Quiz Completed Screen](../assets/Images/quizCompletedScreen.png) 
+
 > Now you can view the stats and also clear the scores or start the quiz again   
+
 ![Stats Screen](../assets/Images/statsScreen2.png) 
 
 ## Contributing
