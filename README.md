@@ -2,7 +2,9 @@
 # README Generator
 
 [Application Video URL 1  ](https://drive.google.com/file/d/1jPwBuRB2FDgLHR9P9UpDvUee3XBwPRly/view)
+
 [Application Video URL 1  ](https://drive.google.com/file/d/1Q1-dKIY6HLKycwmEJbT96oecwu50dC0m/view)
+
 [Repository URL ](https://github.com/SanjeevKumar-DEV/Readme-Generator)
 
 ## Description
@@ -38,8 +40,11 @@ npm install
 ## Usage
 
 > Start terminal and invoke application by typing ‘node index.js’  
+
 ![Start the application](assets/Images/startTheApplication.png) 
+
 > Answer all the questions as applicable one after another about repository, title of the project, Description, Installation, Usage, License, Contributing, Tests, Questions, Github profile and Email 
+
 ![Provide Inputs](assets/Images/provideInputs.png) 
 
 ## Contributing
