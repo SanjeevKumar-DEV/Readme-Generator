@@ -3,7 +3,7 @@
 
 [Application Video URL 1  ](https://drive.google.com/file/d/1jPwBuRB2FDgLHR9P9UpDvUee3XBwPRly/view)
 
-[Application Video URL 1  ](https://drive.google.com/file/d/1Q1-dKIY6HLKycwmEJbT96oecwu50dC0m/view)
+[Application Video URL 2  ](https://drive.google.com/file/d/1Q1-dKIY6HLKycwmEJbT96oecwu50dC0m/view)
 
 [Repository URL ](https://github.com/SanjeevKumar-DEV/Readme-Generator)
 
