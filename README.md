@@ -7,6 +7,10 @@
 
 [Repository URL ](https://github.com/SanjeevKumar-DEV/Readme-Generator)
 
+## Technologies
+
+- Node, Inquirer, Classes, Javascript
+
 ## Description
 
 > This is a command line application that 
